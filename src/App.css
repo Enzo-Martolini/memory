@@ -1,0 +1,32 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+.appContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.imageContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes égales */
+  gap: 20px; /* Espace entre les éléments */
+}
+
+.imageItem {
+  text-align: center; /* Centre l'image horizontalement */
+}
+
+.active {
+  border: solid red 3px;
+}
+
+.checked {
+  border: solid green 3px;
+}
+
