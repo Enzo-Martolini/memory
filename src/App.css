@@ -15,7 +15,7 @@
 .imageContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes égales */
-  gap: 20px; /* Espace entre les éléments */
+  gap: 60px; /* Espace entre les éléments */
 }
 
 .imageItem {
@@ -30,3 +30,20 @@
   border: solid green 3px;
 }
 
+#title_win {
+  display: none;
+  position: absolute; /* postulat de départ */
+  background-color: rgb(255, 86, 114);
+  top:50%;
+
+  padding: 5% 21%;
+  border-radius:500px;
+}
+
+#shuffle {
+  margin: 10%;
+}
+
+#title_trickstar {
+  margin: 5%;
+}

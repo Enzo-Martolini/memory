@@ -35,9 +35,12 @@ function shuffleImagesArray(array) {
 function Card () {
 
   const shuffledImages = shuffleImagesArray(imagesArray);
-  console.log(shuffledImages);
+  // console.log(shuffledImages);
   let clickedImages = [];
   let activeImage = [];
+  const title_win = document.getElementById("title_win")
+  let cardFinded=0;
+
 
   function handleClick (id, value){
     const image = document.getElementById(id)
@@ -45,21 +48,22 @@ function Card () {
     activeImage.push(image);
     image.classList.add("active")
     clickedImages.push({id, value})
-    console.log('id')
-    console.log(id)
-    console.log('handleClick')
-    console.log(clickedImages[0].id)
-    console.log(clickedImages[1].value)
+    // console.log('id')
+    // console.log(id)
+    // console.log('handleClick')
+    // console.log(clickedImages[0].id)
+    // console.log(clickedImages[1].value)
 
     const imageOne = document.getElementById(clickedImages[0].id)
     const imageTwo = document.getElementById(clickedImages[1].id)
 
 
     if (clickedImages.length === 2) {
-      console.log("premiere condition ok")
+      // console.log("premiere condition ok")
       if (clickedImages[0].id === clickedImages[1].value)
       {
         console.log ('même pair')
+        cardFinded ++;
         clickedImages = [];
         console.log(clickedImages);
         setTimeout(() => {
@@ -68,7 +72,8 @@ function Card () {
         setTimeout(() => {
           imageOne.classList.add("checked");
           imageTwo.classList.add("checked");
-        }, 500);       
+        }, 500);
+        console.log ("carte trouvées =" + cardFinded)
       } else {
         console.log('pas la même')
         clickedImages = [];
@@ -82,7 +87,10 @@ function Card () {
         }, 1000);       
       }
     }
-
+    if (cardFinded >=8){
+      console.log("9 cartes trouvée")
+      title_win.style.display = "block"
+    }
 
   }
 
@@ -92,20 +100,21 @@ function Card () {
         {shuffledImages.map((image, index) => (
            <> 
             <div key={image.id}>
-              <img src="./public/back_trickstar.png" value={index} width='300px' onClick={()=>handleClick(image.id, image.value)} id={image.id}/>
+              <img src="./public/back_trickstar.png" value={index} width='200px' onClick={()=>handleClick(image.id, image.value)} id={image.id}/>
             </div>
           </>
           ))}
         </div>
-        {/* <button onClick={buttonShuffleImagesArray}>Mélange</button> */}
         </>)
   };
 
 function App() {
   return (
     <>
+      <h1 id="title_trickstar">Retrouvez les paires de trickstar</h1>
+      <h1 id="title_win">Vous avez gagné</h1>
       <Card />
-    </>
+      <button id="shuffle" onClick={() => window.location.reload(false)}>Mélanger</button>    </>
   );
 }
 
